@@ -12,10 +12,11 @@ class SelecionaJogo extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.fromLTRB(16, 60, 16, 16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Header(text: 'Jogar novamente'),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ImageButtonGame(
                     gameTitle: 'Ticket to Ride',
@@ -30,6 +31,7 @@ class SelecionaJogo extends StatelessWidget {
               const Divider(height: 1),
               const Header(text: 'Outros jogos'),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ImageButtonGame(
                     gameTitle: 'CV',
