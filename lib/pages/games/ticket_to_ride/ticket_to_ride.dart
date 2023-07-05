@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:projeto_final/components/button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../../../components/breadcrumbs_component.dart';
+
 class TicketToRideScore extends StatefulWidget {
   const TicketToRideScore({super.key});
 
@@ -21,6 +23,11 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
       carouselItemFocused = newIndex;
     });
   }
+
+  dynamic nextPage() {
+    debugPrint('proxima pagina');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +67,8 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
                 color: Colors.red
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CarouselSlider(
                     items: CarrouselItems,
@@ -70,14 +79,20 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
                       ,
                     ),
                   ),
-                  Text(carouselItemFocused.toString())
+                  BreadCrumbs(
+                    crumbsSize: CarrouselItems.length,
+                    activeIndex: carouselItemFocused
+                  ),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(40),
-              child: Button(text: 'adicionar jogador', onPressed: () {},),
-            ),          
+              child: Button(
+                text: 'adicionar jogador',
+                onPressed: carouselItemFocused == 1 ? nextPage : null,
+              ),
+            ),
           ],
         ),
       )
