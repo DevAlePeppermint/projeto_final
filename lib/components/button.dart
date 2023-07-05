@@ -3,7 +3,7 @@ import 'package:projeto_final/components/text_header.dart';
 
 class Button extends StatelessWidget {
   final String text;
-  final Function() onPressed;
+  final dynamic onPressed;
 
   const Button({
     super.key,
