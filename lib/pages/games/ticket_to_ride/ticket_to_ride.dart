@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/components/button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:projeto_final/pages/games/ticket_to_ride/components/train_counter.dart';
 
 import '../../../components/breadcrumbs_component.dart';
 
@@ -14,8 +15,8 @@ class TicketToRideScore extends StatefulWidget {
 class _TicketToRideScoreState extends State<TicketToRideScore> {
   int carouselItemFocused = 0;
   List<Widget> CarrouselItems = [
-    Text('hello'),
-    Text('bye bye')
+    const TrainCounter(),
+    const Text('bye bye')
   ];
 
   void onCarouselPageChange (newIndex, reason) {
@@ -26,6 +27,10 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
 
   dynamic nextPage() {
     debugPrint('proxima pagina');
+  }
+
+  void navigateBack() {
+    Navigator.pop(context);
   }
 
   @override
@@ -43,9 +48,9 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                 IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_back)),
-                Text('Voltar'),
+                  onPressed: navigateBack,
+                  icon: const Icon(Icons.arrow_back)),
+                  const Text('Voltar'),
                   ],
                 ),
                 const Spacer(),
@@ -55,8 +60,8 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
                   children: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.check)),
-                Text('Concluir'),
+                  icon: const Icon(Icons.check)),
+                const Text('Concluir'),
                   ],
                 )
               ],
@@ -73,6 +78,7 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
                   CarouselSlider(
                     items: CarrouselItems,
                     options: CarouselOptions(
+                      viewportFraction: 1,
                       height: 400,
                       enableInfiniteScroll: false,
                       onPageChanged: onCarouselPageChange
