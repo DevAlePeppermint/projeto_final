@@ -61,6 +61,7 @@ flutter:
   assets:
     - lib/assets/tickettoride.jpg
     - lib/assets/cv.jpg
+    - lib/assets/trem-de-brinquedo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
