@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/components/button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:projeto_final/pages/games/ticket_to_ride/components/goals_counter.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/train_counter.dart';
 
 import '../../../components/breadcrumbs_component.dart';
@@ -16,7 +17,7 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
   int carouselItemFocused = 0;
   List<Widget> CarrouselItems = [
     const TrainCounter(),
-    const Text('bye bye')
+    const GoalsCounter()
   ];
 
   void onCarouselPageChange (newIndex, reason) {
@@ -69,7 +70,7 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.red
+                color: Colors.indigo[50]
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

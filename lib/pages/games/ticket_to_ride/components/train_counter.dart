@@ -16,7 +16,7 @@ class _TrainCounterState extends State<TrainCounter> {
       padding: const EdgeInsets.all(16),
       child: Container(
         child: const Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextSecondary(text: 'Maria'),
             Column(
