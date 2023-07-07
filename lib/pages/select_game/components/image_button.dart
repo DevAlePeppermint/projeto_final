@@ -25,7 +25,7 @@ class ImageButtonGame extends StatelessWidget {
               height: 100,
               child: image,
             ),
-            Text(gameTitle)
+            Text(gameTitle, style: const TextStyle(color: Colors.white),)
           ],
         ),
       ),

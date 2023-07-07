@@ -57,9 +57,10 @@ class _RankingState extends State<Ranking> {
                 for(var index = 0; index < store.players.length; index++)
                 Row(
                   children: [
-                    Text(store.players[index].player),
+                    Text(store.players[index].player, style: const TextStyle(fontSize: 16),),
                     const Spacer(),
-                    Text(store.players[index].totalPoints.toString())
+                    Text(store.players[index].totalPoints.toString()),
+                    const SizedBox(height: 30,) // ajustar futuramente
                   ],
                 ),
               ]),
