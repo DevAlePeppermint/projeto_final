@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/components/text_secondary.dart';
 
+import '../../../../services/games/ticket_to_ride.dart';
+
 class GoalCities extends StatefulWidget {
   final cityName;
+  final points;
 
   const GoalCities({
     super.key,
     required this.cityName,
+    required this.points,
   });
 
   @override
@@ -14,7 +18,7 @@ class GoalCities extends StatefulWidget {
 }
 
 class _GoalCitiesState extends State<GoalCities> {
-  String? goalStatus = 'not taken';
+  String? goalStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,7 @@ class _GoalCitiesState extends State<GoalCities> {
             setState(() {
               goalStatus = selectedValue;
             });
+            countGoals(widget.points, 'finished', goalStatus);
           },
         ),
         Radio(
@@ -40,6 +45,7 @@ class _GoalCitiesState extends State<GoalCities> {
             setState(() {
               goalStatus = selectedValue;
             });
+            countGoals(widget.points, 'unfinished', goalStatus);
           },
         ),
       ],

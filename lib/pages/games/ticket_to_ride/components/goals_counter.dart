@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/goal_selecter.dart';
 
 import '../../../../components/text_secondary.dart';
+import '../../../../services/games/ticket_to_ride.dart';
 
 class GoalsCounter extends StatefulWidget {
   const GoalsCounter({super.key});
@@ -51,6 +52,7 @@ class _GoalsCounterState extends State<GoalsCounter> {
                         setState(() {
                           isLongestTrainPath = value!;
                         });
+                        countLongestPathPoints(value!);
                       }
                     ),
                     const Padding(

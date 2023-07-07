@@ -29,7 +29,10 @@ class _GoalSelecterState extends State<GoalSelecter> {
             ],
           ),
           for(var index = 0; index < cityPoints.length; index++)
-            GoalCities(cityName: cityPoints[index].city),
+            GoalCities(
+              cityName: cityPoints[index].city,
+              points: cityPoints[index].points
+            ),
         ],
       ),
     )

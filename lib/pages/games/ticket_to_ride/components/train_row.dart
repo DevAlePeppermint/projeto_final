@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/services/games/ticket_to_ride.dart';
 import '../../../../components/text_secondary.dart';
 
 class TrainRow extends StatefulWidget {
   final int trainsUnits;
-  final Function() onPlus;
-  final Function() onDown;
 
   const TrainRow({
     super.key,
     required this.trainsUnits,
-    required this.onPlus,
-    required this.onDown,
   });
 
   @override
@@ -24,6 +21,15 @@ class _TrainRowState extends State<TrainRow> {
     setState(() {
       points = points + 1;
     });
+    countPoints(widget.trainsUnits, points, 'plus');
+  }
+
+  void onClickDown () {
+    if (points == 0) return;
+    setState(() {
+      points = points - 1;
+    });
+    countPoints(widget.trainsUnits, points, 'down');
   }
 
   @override
@@ -47,7 +53,7 @@ class _TrainRowState extends State<TrainRow> {
             ),
             child: IconButton(
               focusColor: Colors.pink.withOpacity(0.3),
-              onPressed: widget.onDown,
+              onPressed: onClickDown,
               icon: const Icon(Icons.remove,  color: Colors.red)
             )
           ),
@@ -62,7 +68,6 @@ class _TrainRowState extends State<TrainRow> {
               onPressed: onClickPlus, 
               icon: const Icon(Icons.add, color: Colors.blue)
             )
-            
           )
         ],
       ),
