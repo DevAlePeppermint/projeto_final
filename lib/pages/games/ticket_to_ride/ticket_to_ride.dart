@@ -58,6 +58,7 @@ CarouselController a = CarouselController();
     store = Provider.of<TicketToRideProvider>(context, listen: true);
     
     return Scaffold(
+      backgroundColor: const Color(0xff27233a),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -71,8 +72,8 @@ CarouselController a = CarouselController();
                   children: [
                 IconButton(
                   onPressed: navigateBack,
-                  icon: const Icon(Icons.arrow_back)),
-                  const Text('Voltar'),
+                  icon: const Icon(Icons.arrow_back, color: Color(0xfff5f5f5))),
+                  const Text('Voltar', style: TextStyle(color: Color(0xfff5f5f5))),
                   ],
                 ),
                 const Spacer(),
@@ -82,8 +83,8 @@ CarouselController a = CarouselController();
                   children: [
                 IconButton(
                   onPressed: navigateToConcluir,
-                  icon: const Icon(Icons.check)),
-                const Text('Concluir'),
+                  icon: const Icon(Icons.check, color: Color(0xfff5f5f5))),
+                const Text('Concluir', style: TextStyle(color: Color(0xfff5f5f5))),
                   ],
                 )
               ],

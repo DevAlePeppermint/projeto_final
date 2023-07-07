@@ -24,6 +24,7 @@ class _RankingState extends State<Ranking> {
     store = Provider.of<TicketToRideProvider>(context, listen: false);
 
     return Scaffold(
+      backgroundColor: const Color(0xff27233a),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -43,13 +44,13 @@ class _RankingState extends State<Ranking> {
             width: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: Colors.amber[50]
+              color:Colors.indigo[50]
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
               children: [
-                const Header(text: 'Pontuação'),
+                const Text('Pontuação', style: TextStyle(color: Color(0xff000000), fontSize: 24),),
                 const SizedBox(
                   height: 24,
                 ),

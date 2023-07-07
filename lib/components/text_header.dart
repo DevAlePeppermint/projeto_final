@@ -12,7 +12,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text, 
-      style: const TextStyle(fontSize: 24),
+      style: const TextStyle(fontSize: 24, color: Color(0xfff5f5f5)),
     );
   }
 }

@@ -19,6 +19,7 @@ class _SelecionaJogoState extends State<SelecionaJogo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff27233a),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 60, 16, 16),
@@ -41,7 +42,7 @@ class _SelecionaJogoState extends State<SelecionaJogo> {
                   ),
                 ],
               ),
-              const Divider(height: 1),
+              const Divider(height: 1, color: Color(0xfff5f5f5),),
               const Header(text: 'Outros jogos'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
