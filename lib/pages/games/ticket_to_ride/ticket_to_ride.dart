@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final/app_routes.dart';
 import 'package:projeto_final/components/button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/goals_counter.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/train_counter.dart';
-import 'package:projeto_final/services/games/ticket_to_ride.dart';
 import 'package:provider/provider.dart';
 import '../../../components/breadcrumbs_component.dart';
 import '../../../providers/ticket_to_ride_provider.dart';
@@ -48,6 +48,10 @@ CarouselController a = CarouselController();
   void navigateBack() {
     Navigator.pop(context);
   }
+  
+  void navigateToConcluir() {
+    Navigator.pushNamed(context, AppRoutes.ranking);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +81,7 @@ CarouselController a = CarouselController();
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: navigateToConcluir,
                   icon: const Icon(Icons.check)),
                 const Text('Concluir'),
                   ],

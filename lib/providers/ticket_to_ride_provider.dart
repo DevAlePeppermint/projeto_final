@@ -4,7 +4,7 @@ import '../entities/ticket_to_ride_entitie.dart';
 
 class TicketToRideProvider with ChangeNotifier {
   int _activePlayer = 0;
-  List<ScorePointsEntitie> players = [
+  List<ScorePointsEntitie> _players = [
     ScorePointsEntitie(player: 'Player 1', totalPoints: 0),
     ScorePointsEntitie(player: 'Player 2', totalPoints: 0),
     ScorePointsEntitie(player: 'Player 3', totalPoints: 0),
@@ -32,6 +32,13 @@ class TicketToRideProvider with ChangeNotifier {
 
   set activePlayer (val) {
     _activePlayer = val;
+    notifyListeners();
+  }
+
+  List<ScorePointsEntitie> get players => _players;
+
+  set players (val) {
+    _players = val;
     notifyListeners();
   }
 
