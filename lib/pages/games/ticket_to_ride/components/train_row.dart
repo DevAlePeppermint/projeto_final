@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/services/games/ticket_to_ride.dart';
+import 'package:provider/provider.dart';
 import '../../../../components/text_secondary.dart';
+import '../../../../providers/ticket_to_ride_provider.dart';
 
 class TrainRow extends StatefulWidget {
   final int trainsUnits;
@@ -15,13 +17,14 @@ class TrainRow extends StatefulWidget {
 }
 
 class _TrainRowState extends State<TrainRow> {
+  late TicketToRideProvider store;
   int points = 0;
 
   void onClickPlus () {
     setState(() {
       points = points + 1;
     });
-    countPoints(widget.trainsUnits, points, 'plus');
+    store.countPoints(widget.trainsUnits, points, 'plus');
   }
 
   void onClickDown () {
@@ -29,11 +32,14 @@ class _TrainRowState extends State<TrainRow> {
     setState(() {
       points = points - 1;
     });
-    countPoints(widget.trainsUnits, points, 'down');
+    store.countPoints(widget.trainsUnits, points, 'down');
   }
 
   @override
   Widget build(BuildContext context) {
+    store = Provider.of<TicketToRideProvider>(context, listen: true);
+
+
     return Padding(
       padding: const EdgeInsets.all(2),
       child: Row(

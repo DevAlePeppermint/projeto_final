@@ -8,8 +8,8 @@ class AppRoutes {
 
   static Map<String, Widget Function(BuildContext)> routes () {
       return {
-        selecionaJogo: (context) => const SelecionaJogo(),
         ticketToRide: (context) => const TicketToRideScore(),
+        selecionaJogo: (context) => const SelecionaJogo(),
     };
   }
 }

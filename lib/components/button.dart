@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/components/text_header.dart';
 
 class Button extends StatelessWidget {
   final String text;

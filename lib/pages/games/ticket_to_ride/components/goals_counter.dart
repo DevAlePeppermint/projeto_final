@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/goal_selecter.dart';
-
+import 'package:projeto_final/providers/ticket_to_ride_provider.dart';
 import '../../../../components/text_secondary.dart';
 import '../../../../services/games/ticket_to_ride.dart';
 
@@ -12,6 +13,7 @@ class GoalsCounter extends StatefulWidget {
 }
 
 class _GoalsCounterState extends State<GoalsCounter> {
+  late TicketToRideProvider store;
   bool isLongestTrainPath = false;
 
   Color getColor (states) {
@@ -28,13 +30,15 @@ class _GoalsCounterState extends State<GoalsCounter> {
 
   @override
   Widget build(BuildContext context) {
+    store = Provider.of<TicketToRideProvider>(context, listen: true);
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const TextSecondary(text: 'Maria'),
+            TextSecondary(text: store.namePlayer),
             Column(
               children: [
                 const GoalSelecter(),
@@ -52,7 +56,7 @@ class _GoalsCounterState extends State<GoalsCounter> {
                         setState(() {
                           isLongestTrainPath = value!;
                         });
-                        countLongestPathPoints(value!);
+                        store.countLongestPathPoints(value!);
                       }
                     ),
                     const Padding(

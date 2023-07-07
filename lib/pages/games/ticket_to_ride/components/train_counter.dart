@@ -1,3 +1,5 @@
+import '../../../../providers/ticket_to_ride_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/train_row.dart';
 import '../../../../components/text_secondary.dart';
@@ -10,16 +12,27 @@ class TrainCounter extends StatefulWidget {
 }
 
 class _TrainCounterState extends State<TrainCounter> {
+  late TicketToRideProvider store;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) async {
+      
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16),
+    store = Provider.of<TicketToRideProvider>(context, listen: true);
+
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TextSecondary(text: 'Player 1'),
-          Column(
+          TextSecondary(text: store.namePlayer),
+          const Column(
             children: [
               TrainRow(
                 trainsUnits: 1,

@@ -3,8 +3,10 @@ import 'package:projeto_final/components/button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/goals_counter.dart';
 import 'package:projeto_final/pages/games/ticket_to_ride/components/train_counter.dart';
-
+import 'package:projeto_final/services/games/ticket_to_ride.dart';
+import 'package:provider/provider.dart';
 import '../../../components/breadcrumbs_component.dart';
+import '../../../providers/ticket_to_ride_provider.dart';
 
 class TicketToRideScore extends StatefulWidget {
   const TicketToRideScore({super.key});
@@ -14,6 +16,7 @@ class TicketToRideScore extends StatefulWidget {
 }
 
 class _TicketToRideScoreState extends State<TicketToRideScore> {
+  late TicketToRideProvider store;
   int carouselItemFocused = 0;
   List<Widget> CarrouselItems = [
     const TrainCounter(),
@@ -26,8 +29,20 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
     });
   }
 
-  dynamic nextPage() {
-    debugPrint('proxima pagina');
+CarouselController a = CarouselController();
+
+  void addPlayer () {
+    store.addPlayer();
+    debugPrint(store.namePlayer);
+    debugPrint(store.activePlayer.toString());
+  }
+
+  dynamic handleAddPlayer() {
+    addPlayer();
+    setState(() {
+      carouselItemFocused = 0;
+    });
+    a.jumpToPage(0);
   }
 
   void navigateBack() {
@@ -36,6 +51,8 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
 
   @override
   Widget build(BuildContext context) {
+    store = Provider.of<TicketToRideProvider>(context, listen: true);
+    
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -78,6 +95,7 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
                 children: [
                   CarouselSlider(
                     items: CarrouselItems,
+                    carouselController: a,
                     options: CarouselOptions(
                       viewportFraction: 1,
                       height: 400,
@@ -97,7 +115,7 @@ class _TicketToRideScoreState extends State<TicketToRideScore> {
               padding: const EdgeInsets.all(40),
               child: Button(
                 text: 'adicionar jogador',
-                onPressed: carouselItemFocused == 1 ? nextPage : null,
+                onPressed: carouselItemFocused == 1 ? handleAddPlayer : null,
               ),
             ),
           ],

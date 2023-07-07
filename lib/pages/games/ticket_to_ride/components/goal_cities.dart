@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/components/text_secondary.dart';
-
-import '../../../../services/games/ticket_to_ride.dart';
+import 'package:projeto_final/providers/ticket_to_ride_provider.dart';
+import 'package:provider/provider.dart';
 
 class GoalCities extends StatefulWidget {
   final cityName;
@@ -19,9 +19,13 @@ class GoalCities extends StatefulWidget {
 
 class _GoalCitiesState extends State<GoalCities> {
   String? goalStatus;
+  late TicketToRideProvider store;
 
   @override
   Widget build(BuildContext context) {
+    store = Provider.of<TicketToRideProvider>(context, listen: true);
+
+
     return Row(
       children: [
         TextSecondary(text: widget.cityName),
@@ -34,7 +38,7 @@ class _GoalCitiesState extends State<GoalCities> {
             setState(() {
               goalStatus = selectedValue;
             });
-            countGoals(widget.points, 'finished', goalStatus);
+            store.countGoals(widget.points, 'finished', goalStatus);
           },
         ),
         Radio(
@@ -45,7 +49,7 @@ class _GoalCitiesState extends State<GoalCities> {
             setState(() {
               goalStatus = selectedValue;
             });
-            countGoals(widget.points, 'unfinished', goalStatus);
+            store.countGoals(widget.points, 'unfinished', goalStatus);
           },
         ),
       ],
